@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LibraryManager.Models.Employee>
+
+@{
+    ViewBag.Title = "İşçilərin siyahısı";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni işçi yarad", "Create")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            İstifadəçi adı
+        </th>
+        <th>
+            Ad
+        </th>
+        <th>
+            Soyad
+        </th>
+        <th>
+            Doğum tarixi
+        </th>
+        <th>
+            Elektron poçt
+        </th>
+        <th>
+            Telefon
+        </th>
+        <th>
+            Şöbə
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_of_birth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.name)
+        </td>
+        <td>
+            @Html.ActionLink("Dəyişdir", "Edit", new { id = item.user_id }) |
+            @Html.ActionLink("Ətraflı", "Details", new { id = item.user_id }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.user_id })
+        </td>
+    </tr>
+    }
+
+</table>
